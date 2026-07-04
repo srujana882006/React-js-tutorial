@@ -17,7 +17,7 @@ const App = () => {
 
     useEffect(function(){
       getData()
-    },[index])
+    },[Index])
 
     let noData='Loading...'
 
