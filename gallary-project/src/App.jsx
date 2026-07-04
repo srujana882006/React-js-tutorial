@@ -7,7 +7,10 @@ const App = () => {
     const [first, setFirst] = useState([])
     const [index, setIndex] = useState(1)
 
-    const getData=async()=>{
+    
+    useEffect(function(){
+
+      const getData=async()=>{
 
       const response=await axios.get(`https://picsum.photos/v2/list?page=${index}&limit=10`)
       console.log(response.data)
@@ -15,9 +18,8 @@ const App = () => {
       setFirst(response.data)
     }
 
-    useEffect(function(){
       getData()
-    },[Index])
+    },[index])
 
     let noData='Loading...'
 
@@ -25,7 +27,7 @@ const App = () => {
       {
       noData =first.map((elem,idx)=>{
 
-        return <div className="">
+        return <div key={idx}>
                
                  <a href={elem.url} target='_blank'>
                   <img src={elem.download_url} className="h-60 w-60 object-cover rounded-xl"/>
@@ -52,7 +54,7 @@ const App = () => {
             className="px-5 py-3 bg-amber-400 text-black rounded active:scale-95 "
              onClick={
                ()=>{
-                if(index>0){
+                if(index>1){
                   setIndex(index-1)
                   setFirst([])
                 }
