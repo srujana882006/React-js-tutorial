@@ -1,0 +1,10 @@
+
+const About = () => {
+  return (
+     <div className="min-h-screen flex items-center justify-center underline ">
+      <h1 className="font-extrabold text-8xl">About page</h1>
+       </div>
+  )
+}
+
+export default About
